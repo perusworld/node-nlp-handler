@@ -65,4 +65,29 @@ NLPHandler.prototype.resolveDateTime = function (resp, callback) {
   });
 };
 
+NLPHandler.prototype.resolveAmount = function (resp, callback) {
+  var ret = null;
+  if (resp && resp.entities && resp.entities.amount_of_money && 0 < resp.entities.amount_of_money.length) {
+    ret = {
+      value: resp.entities.amount_of_money[0].value,
+      unit: resp.entities.amount_of_money[0].unit
+    }
+  }
+  async.nextTick(() => {
+    callback(null, ret);
+  });
+};
+
+NLPHandler.prototype.resolveEmail = function (resp, callback) {
+  var ret = null;
+  if (resp && resp.entities && resp.entities.email && 0 < resp.entities.email.length) {
+    ret = {
+      email: resp.entities.email[0].value
+    }
+  }
+  async.nextTick(() => {
+    callback(null, ret);
+  });
+};
+
 module.exports.NLPHandler = NLPHandler;

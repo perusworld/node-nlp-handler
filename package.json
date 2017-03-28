@@ -1,6 +1,6 @@
 {
   "name": "node-nlp-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple NLP Wrapper",
   "main": "node-nlp-handler.js",
   "scripts": {
