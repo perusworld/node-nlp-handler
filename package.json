@@ -1,0 +1,32 @@
+{
+  "name": "node-nlp-handler",
+  "version": "1.0.0",
+  "description": "Simple NLP Wrapper",
+  "main": "node-nlp-handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/perusworld/node-nlp-handler.git"
+  },
+  "keywords": [
+    "nodejs",
+    "nlp",
+    "api"
+  ],
+  "author": "Saravana Perumal Shanmugam <saravanaperumal@msn.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/perusworld/node-nlp-handler/issues"
+  },
+  "homepage": "https://github.com/perusworld/node-nlp-handler",
+  "dependencies": {
+    "async": "^2.2.0",
+    "config": "^1.25.1",
+    "merge": "^1.2.0",
+    "moment": "^2.18.1",
+    "node-wit": "^4.2.0"
+  },
+  "devDependencies": {}
+}
