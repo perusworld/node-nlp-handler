@@ -82,7 +82,7 @@ NLPHandler.prototype.resolveEmail = function (resp, callback) {
   var ret = null;
   if (resp && resp.entities && resp.entities.email && 0 < resp.entities.email.length) {
     ret = {
-      email: resp.entities.email[0].value
+      value: resp.entities.email[0].value
     }
   }
   async.nextTick(() => {
