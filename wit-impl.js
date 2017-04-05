@@ -78,6 +78,18 @@ NLPHandler.prototype.resolveAmount = function (resp, callback) {
   });
 };
 
+NLPHandler.prototype.resolveNumber = function (resp, callback) {
+  var ret = null;
+  if (resp && resp.entities && resp.entities.number && 0 < resp.entities.number.length) {
+    ret = {
+      value: resp.entities.number[0].value
+    }
+  }
+  async.nextTick(() => {
+    callback(null, ret);
+  });
+};
+
 NLPHandler.prototype.resolveEmail = function (resp, callback) {
   var ret = null;
   if (resp && resp.entities && resp.entities.email && 0 < resp.entities.email.length) {
