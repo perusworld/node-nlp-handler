@@ -65,7 +65,7 @@ NLPHandler.prototype.resolveDateTime = function (resp, callback) {
   });
 };
 
-NLPHandler.prototype.resolveAmount = function (resp, callback) {
+NLPHandler.prototype.resolveAmount = function (resp, callback, fallbackToNumber) {
   var ret = null;
   if (resp && resp.entities && resp.entities.amount_of_money && 0 < resp.entities.amount_of_money.length) {
     ret = {
@@ -73,9 +73,16 @@ NLPHandler.prototype.resolveAmount = function (resp, callback) {
       unit: resp.entities.amount_of_money[0].unit
     }
   }
-  async.nextTick(() => {
-    callback(null, ret);
-  });
+  if (!ret && fallbackToNumber) {
+    ret = this.resolveNumber(resp);
+  }
+  if (callback) {
+    async.nextTick(() => {
+      callback(null, ret);
+    });
+  } else {
+    return ret;
+  }
 };
 
 NLPHandler.prototype.resolveNumber = function (resp, callback) {
@@ -85,9 +92,13 @@ NLPHandler.prototype.resolveNumber = function (resp, callback) {
       value: resp.entities.number[0].value
     }
   }
-  async.nextTick(() => {
-    callback(null, ret);
-  });
+  if (callback) {
+    async.nextTick(() => {
+      callback(null, ret);
+    });
+  } else {
+    return ret;
+  }
 };
 
 NLPHandler.prototype.resolveEmail = function (resp, callback) {
