@@ -5,16 +5,14 @@ const { Wit, log } = require('node-wit'),
 
 var moment = require('moment');
 
-const config = require('config');
-
-function NLPHandler() {
+function NLPHandler(config) {
 
   const logApi = (process.env.LOG_API) ?
     (process.env.LOG_API) :
-    config.get('logAPI');
+    config.logAPI;
   const accessToken = (process.env.WIT_ACCESS_TOKEN) ?
     (process.env.WIT_ACCESS_TOKEN) :
-    config.get('witAccessToken');
+    config.witAccessToken;
 
   this.conf = {
     log: logApi,

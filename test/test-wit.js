@@ -1,6 +1,9 @@
 var nlpapi = require('../node-nlp-handler').nlphandler();
 
-var nlphandler = new nlpapi.NLPHandler();
+var nlphandler = new nlpapi.NLPHandler({
+  "logAPI": false,
+  "witAccessToken": ""
+});
 
 var text = "two hundred and fifty five";
 nlphandler.resolve(text, (err, resp) => {

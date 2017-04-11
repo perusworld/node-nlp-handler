@@ -1,6 +1,6 @@
 {
   "name": "node-nlp-handler",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Simple NLP Wrapper",
   "main": "node-nlp-handler.js",
   "scripts": {
@@ -23,8 +23,6 @@
   "homepage": "https://github.com/perusworld/node-nlp-handler",
   "dependencies": {
     "async": "^2.2.0",
-    "config": "^1.25.1",
-    "merge": "^1.2.0",
     "moment": "^2.18.1",
     "node-wit": "^4.2.0"
   },
