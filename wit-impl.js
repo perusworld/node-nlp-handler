@@ -4,6 +4,7 @@ const { Wit, log } = require('node-wit'),
   async = require('async');
 
 var moment = require('moment');
+var HttpsProxyAgent = require('https-proxy-agent');
 
 function NLPHandler(config) {
 
@@ -13,12 +14,20 @@ function NLPHandler(config) {
   const accessToken = (process.env.WIT_ACCESS_TOKEN) ?
     (process.env.WIT_ACCESS_TOKEN) :
     config.witAccessToken;
+  const httpProxy = (process.env.HTTP_PROXY) ?
+    (process.env.HTTP_PROXY) :
+    config.httpProxy;
 
+  var opts = {
+    accessToken: accessToken
+  };
+  if (httpProxy && "" !== httpProxy) {
+    console.log('using proxy', httpProxy)
+    opts.agent = new HttpsProxyAgent(httpProxy);
+  }
   this.conf = {
     log: logApi,
-    client: new Wit({
-      accessToken: accessToken,
-    })
+    client: new Wit(opts)
   };
 
 }
